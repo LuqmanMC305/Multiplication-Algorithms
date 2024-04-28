@@ -1,12 +1,50 @@
+import java.lang.Math;
+import java.util.Random;
 class LongMultiplication{
-    public static int count = 0;
+    public static long count = 0;
     public static void main(String[] args) {
-        String num1 = "123", num2 = "456";
-        System.out.println(multiply(num1, num2));
 
-        System.out.println(count);
+        Random random = new Random();
+      
+        int digitLen = 1; //Initial digit length
+
+        for(int i = 0; i < 5; i++)
+        {
+            //Ensure multiplier & multiplicand lengths are same when randomly generate them
+            int lowerBound = (int)Math.pow(10, digitLen - 1);
+            int upperBound = (int) Math.pow(10, digitLen) - 1;
+            
+            //Generate two random numbers to multiply
+            long randomNum1 = random.nextInt(upperBound - lowerBound + 1) + lowerBound;
+            long randomNum2 = random.nextInt(upperBound - lowerBound + 1) + lowerBound;
+
+            long expectedRes = randomNum1 * randomNum2;
+
+            String num1 = Long.toString(randomNum1);
+            String num2 = Long.toString(randomNum2);
+
+            long actualRes = Long.parseLong(multiply(num1, num2));
+
+            System.out.println("Expected Res: " + expectedRes);
+            System.out.println("Actual Res: " + actualRes);
+
+            System.out.println(checkEqual(expectedRes, actualRes) ? "CORRECT COMPARISON" : "WRONG COMPARISON");
+
+            System.out.println();
+
+            System.out.println("Count Operations: " + count);
+            
+            System.out.println();
+            digitLen +=2; //Increment the digit length by 2
+        }
+
 
     }
+
+    public static boolean checkEqual(long expectedRes, long actualRes){
+        return expectedRes == actualRes;
+    }
+
     
     public static String multiply(String num1, String num2){
         int n1 = num1.length(), n2 = num2.length();
