@@ -14,12 +14,13 @@ class LongMultiplication{
             int lowerBound = (int)Math.pow(10, digitLen - 1); //If digitLen = 3, upperBound = 10^(3-1) = 100
             int upperBound = (int) Math.pow(10, digitLen) - 1;// If digitLen = 3, upperBound = (10^3) - 1 = 999
             
-            //Generate two random numbers to multiply within the bound
-            long randomNum1 = random.nextInt(upperBound - lowerBound + 1) + lowerBound;
-            long randomNum2 = random.nextInt(upperBound - lowerBound + 1) + lowerBound;
+            //Generate two random numbers to multiply within the bound    
+            int rangeSize = upperBound - lowerBound + 1;
+
+            long randomNum1 = random.nextInt(rangeSize) + lowerBound;
+            long randomNum2 = random.nextInt(rangeSize) + lowerBound;
             
             System.out.println(randomNum1 + " " + randomNum2);
-            //int randomNumber = 10 + (int) (Math.random() * 90);
 
             long expectedRes = randomNum1 * randomNum2;
 
