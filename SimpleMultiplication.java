@@ -67,23 +67,24 @@ class SimpleMultiplication {
         return expectedRes == actualRes;
     }
 
-    // Main function
-    public static void main(String[] args) {
-        Random random = new Random();
-        int digitLen = 1; // Initial digit length
+    public static void generateTwoNums(int digitLen, int maxIteration){
 
-        for (int i = 0; i < 5; i++) {
+        Random random = new Random();
+        
+        for(int i = 0; i < maxIteration; i++){
             // Ensure multiplier and multiplicand lengths are the same when randomly generating them
-            int lowerBound = (int) Math.pow(10, digitLen - 1); // If digitLen = 3, lowerBound = 10^(3 - 1) = 100
-            int upperBound = (int) Math.pow(10, digitLen) - 1; // If digitLen = 3, upperBound = (10^3) - 1 = 999
+            long lowerBound = (long) Math.pow(10, digitLen - 1); // If digitLen = 3, lowerBound = 10^(3 - 1) = 100
+            long upperBound = (long) Math.pow(10, digitLen) - 1; // If digitLen = 3, upperBound = (10^3) - 1 = 999
+
+            System.out.println("Range: " + (upperBound - lowerBound + 1));
 
             // Generate two random numbers to multiply within the bound
-            long randomNum1 = lowerBound + random.nextInt((int) (upperBound - lowerBound + 1));
-            long randomNum2 = lowerBound + random.nextInt((int) (upperBound - lowerBound + 1));
+            long randomNum1 = lowerBound + random.nextLong((long) (upperBound - lowerBound + 1));
+            long randomNum2 = lowerBound + random.nextLong((long) (upperBound - lowerBound + 1));
 
             // Print the randomly generated multiplicand and multiplier
             System.out.println(randomNum1 + " " + randomNum2);
-
+            
             // Calculate expected result using standard multiplication
             long expectedRes = randomNum1 * randomNum2;
 
@@ -100,8 +101,20 @@ class SimpleMultiplication {
             System.out.println("Count Operations: " + count);
             System.out.println();
 
+
             // Increment the digit length for the next iteration
             digitLen += 2;
         }
+    }
+
+    // Main function
+    public static void main(String[] args) {
+        
+        int digitLen = 1; // Initial digit length
+        int maxIteration = 5; // Max iteration (loop) of increasing their digit length by 2
+
+        //generateTwoNums(digitLen, maxIteration);
+        generateTwoNums(digitLen, maxIteration);
+        
     }
 }
