@@ -55,6 +55,14 @@ class SimpleMultiplication {
                 long multiplicandDigit = j % 10;
                 counter+=2; //Modulo & assignment
 
+
+                //Print partial product of each digit
+                long eachPartialProdDigit = (multiplicandDigit * multiplierDigit) % 10;
+                counter+=3; //Assignment, Multiplication & Modulo
+
+                System.out.println("\nPARTIAL PRODUCT FOR " + multiplicandDigit + " * " + multiplierDigit + " = " + eachPartialProdDigit);
+                counter++; //Print
+
                 // Calculate the product and add carry
                 long product = multiplicandDigit * multiplierDigit + carry;
                 counter+=3; //Multiplication, Addition & Assignment
@@ -63,14 +71,11 @@ class SimpleMultiplication {
                 carry = product / 10;
                 counter+=2; //Division & assignment
 
-                System.out.println("Carry: " + carry); 
+                System.out.println("CARRY FOR " + multiplicandDigit + " * " + multiplierDigit +  " = " + carry); 
                 counter++;
 
-                long partialProd = (product % 10) * (long) Math.pow(10, shift);
+                long partialProd = (product % 10) * (long) Math.pow(10, shift); //KIV
                 counter +=4; //Assignment, multiplication, casting, exponent
-
-                System.out.println("Partial Product: " + partialProd);
-                counter++; //Print
 
                 // Add the partial product to the correct index in the array
                 partialProds[shift] += partialProd;
@@ -113,11 +118,13 @@ class SimpleMultiplication {
         return expectedRes == actualRes;
     }
 
-    public static void generateTwoNums(int digitLen, int maxIteration){
-
+    public static void generateTwoNums(int digitLen, int maxIteration){       
         Random random = new Random();
         
         for(int i = 0; i < maxIteration; i++){
+
+            System.out.println("DIGIT LENGTH: " + digitLen);
+
             // Ensure multiplier and multiplicand lengths are the same when randomly generating them
             long lowerBound = (long) Math.pow(10, digitLen - 1); // If digitLen = 3, lowerBound = 10^(3 - 1) = 100
             long upperBound = (long) Math.pow(10, digitLen) - 1; // If digitLen = 3, upperBound = (10^3) - 1 = 999
@@ -129,7 +136,7 @@ class SimpleMultiplication {
             long randomNum2 = lowerBound + random.nextLong((long) (upperBound - lowerBound + 1));
 
             // Print the randomly generated multiplicand and multiplier
-            System.out.println("Num 1: " + randomNum1 + " Num 2: " + randomNum2);
+            System.out.println("Multiplicand: " + randomNum1 + " Multiplier: " + randomNum2);
             
             // Calculate expected result using standard multiplication
             long expectedRes = randomNum1 * randomNum2;
@@ -138,29 +145,31 @@ class SimpleMultiplication {
             long actualRes = multiply(randomNum1, randomNum2);
 
             // Print expected and actual results
-            System.out.println("Expected Res: " + expectedRes);
+            System.out.println("\nExpected Res: " + expectedRes);
             System.out.println("Actual Res: " + actualRes);
 
             // Check if the actual result matches the expected result
-            System.out.println(checkEqual(expectedRes, actualRes) ? "CORRECT COMPARISON" : "WRONG COMPARISON");
+            System.out.println(checkEqual(expectedRes, actualRes) ? "\nCORRECT COMPARISON FOR EXPECTED & ACTUAL RESULTS" : "\nWRONG COMPARISON FOR EXPECTED & ACTUAL RESULTS");
             System.out.println();
-            System.out.println("Count Operations: " + counter);
-            System.out.println();
+            System.out.println("COUNT OPERATIONS FOR N = " + digitLen + " IS " + counter);
+            System.out.println("\n---------------------------------------------");
 
 
-            // Increment the digit length for the next iteration
+            // Increment the digit length by 1 for the next iteration
             digitLen += 1;
+            System.out.println();
         }
     }
 
     // Main function
     public static void main(String[] args) {
-        
-        int digitLen = 1; // Initial digit length
-        int maxIteration = 2; // Max iteration (loop) of increasing their digit length by 2
 
-        //generateTwoNums(digitLen, maxIteration);
-        generateTwoNums(digitLen, maxIteration);
+        System.out.println();
+
+        int digitLen = 1; // Initial digit length
+        int MaxDigit = 9; // Max digit length is 9 to prevent overflowing
+
+        generateTwoNums(digitLen, MaxDigit);
         
     }
 }
