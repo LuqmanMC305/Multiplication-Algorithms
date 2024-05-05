@@ -66,7 +66,7 @@ class Karatsuba
 
     public static void main(String[] args) 
     {
-        int maxDigits = 19; // Maximum number of digits 19 to prevent overflowing
+        int maxDigits = 9; // Maximum number of digits 19 to prevent overflowing
         List<Long> digitLengths = new ArrayList<>();      // Array
         List<Long> operationCounts = new ArrayList<>();      // // Array
 
