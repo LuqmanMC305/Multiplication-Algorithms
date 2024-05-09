@@ -1,9 +1,9 @@
 import matplotlib.pyplot as plt # type: ignore
 
 # Sample data
-n_values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-standard = [60, 217, 517, 1000, 1700, 2705, 4037, 5742, 7854, 11543, 14625, 18544]
-karatsuba = [2, 30, 114, 255, 428, 459, 664, 779, 925, 1128, 1258, 1566]
+n_values = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+standard = [60, 217, 517, 1000, 1700, 2705, 4037, 5742, 7854]
+karatsuba = [2, 30, 114, 255, 428, 459, 664, 779, 925]
 
 # Plotting
 plt.figure(figsize=(6, 4))  # Set figure size

@@ -11,7 +11,7 @@ The time complexity of this code is $O(n^2)$ if the lengths of both multiplicand
 
 This is an efficient multiplication algorithm. It uses divide and conquer method and recursion to merge the sub calculations. 
 
-The time complexity of this algorithm is $O(n^{\log_2 3}) \approx O(n^{1.585})$ which is more efficent than $O(n^2)$. However, this algorithm can be slower than Simple Multiplication one for small values of $n$. 
+The time complexity of this algorithm is $O(n^{\log_2 3}) \approx O(n^{1.585})$ which is more efficent than $O(n^2)$ (Karatsuba, 1995; Dosunmu, 2021). However, this algorithm can be slower than Simple Multiplication one for small values of $n$. 
 
 ### Results from Our Experiment
 
@@ -105,7 +105,15 @@ As the input size, $n$ increases, the vertical gap between two curves increases 
 
 The Karatsuba's algorithm's curve remains consistently lower than the simple multiplication, showing its superior efficiency for larger input sizes.
 
-To sumamrise, this graph provides a crystal clear visual representation of the difference in time complexities between both multiplication algorithms. The simple multiplication algorithm's time complexity is $O(n^2)$ while the Karatsuba's $O(n^{\log_2 3})$ manifests in a slower growth rate.
+To sumamrise, this graph provides a crystal clear visual representation of the difference in time complexities between both multiplication algorithms. The simple multiplication algorithm's time complexity is $O(n^2)$ while the Karatsuba's $O(n^{\log_2 3})$ manifests in a slower growth rate (Wolfram Research, Inc., n.d.).
+
+### References
+
+1) Wolfram Research, Inc. (n.d.). Karatsuba Multiplication -- from Wolfram MathWorld. https://mathworld.wolfram.com/KaratsubaMultiplication.html
+
+2) Karatsuba, A. A. (1995). The complexity of computations. Proceedings of the Steklov Institute of Mathematics, 211, 169–183. Retrieved from http://www.ccas.ru/personal/karatsuba/divcen.pdf 
+
+3) Dosunmu, O. (2021, August 23). Karatsuba Algorithm (for fast integer multiplication). OpenGenus IQ: Learn Algorithms, DL, System Design. https://iq.opengenus.org/karatsuba-algorithm/
 
 
 

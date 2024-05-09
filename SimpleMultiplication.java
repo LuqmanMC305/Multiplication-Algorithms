@@ -1,7 +1,9 @@
+// Part 1: Simple Multiplication Algorithm
+
+
 import java.util.Random;
 
 class SimpleMultiplication {
-    // Counter for operations (optional)
     public static long counter = 0;
 
     public static int countDigits(long num) {
@@ -20,7 +22,7 @@ class SimpleMultiplication {
         return count;
     }
 
-    // Function to multiply two long integers using the simple multiplication algorithm
+    // Method to multiply two integer (not decimals or negative numbers!) numbers using this algorithm
     public static long multiply(long multiplicand, long multiplier) {
         int numDigitsMultiplier = countDigits(multiplier);
         int numDigitsMultiplicand = countDigits(multiplicand);
@@ -29,7 +31,7 @@ class SimpleMultiplication {
         
         long[] partialProds = new long[numDigitsMultiplier + numDigitsMultiplicand];
 
-        counter += 2; //Assign & addition
+        counter += 2; //Assign & Addition
 
         // Iterate through each digit of the multiplier (Right to Left)
         counter++; //Initialise i variable
@@ -56,7 +58,7 @@ class SimpleMultiplication {
                 counter+=2; //Modulo & assignment
 
 
-                //Print partial product of each digit
+                // Partial product of each digit
                 long eachPartialProdDigit = (multiplicandDigit * multiplierDigit) % 10;
                 counter+=3; //Assignment, Multiplication & Modulo
 
@@ -70,7 +72,7 @@ class SimpleMultiplication {
                 // Calculate carry and partial product
                 carry = product / 10;
                 counter+=2; //Division & assignment
-
+              
                 System.out.println("CARRY FOR " + multiplicandDigit + " * " + multiplierDigit +  " = " + carry); 
                 counter++;
 
@@ -129,8 +131,6 @@ class SimpleMultiplication {
             long lowerBound = (long) Math.pow(10, digitLen - 1); // If digitLen = 3, lowerBound = 10^(3 - 1) = 100
             long upperBound = (long) Math.pow(10, digitLen) - 1; // If digitLen = 3, upperBound = (10^3) - 1 = 999
 
-            //System.out.println("Range: " + (upperBound - lowerBound + 1));
-
             // Generate two random numbers to multiply within the bound
             long randomNum1 = lowerBound + random.nextLong((long) (upperBound - lowerBound + 1));
             long randomNum2 = lowerBound + random.nextLong((long) (upperBound - lowerBound + 1));
@@ -167,7 +167,7 @@ class SimpleMultiplication {
         System.out.println();
 
         int digitLen = 1; // Initial digit length
-        int MaxDigit = 9; // Max digit length is 9 to prevent overflowing
+        int MaxDigit = 9; // Max digit length is 9 since the digit length of multiplication result is 2n, max value for long = 2^(63-1)
 
         generateTwoNums(digitLen, MaxDigit);
         
